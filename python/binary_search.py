@@ -1,17 +1,17 @@
-from typing import Optional
+from typing import Optional, List
 
-def binary_search(numbers, search_number) -> Optional[int]:
-    min_idx, max_index = 0, len(numbers) - 1
-
-    while min_idx <= max_index:
-        mid_idx = (min_idx + max_index) // 2
-        found = numbers[mid_idx]
-
-        if found > search_number:
-            max_index = mid_idx - 1
-        elif found < search_number:
-            min_idx = mid_idx + 1
-        else:
-            return mid_idx
+def binary_search(items: List[int], item: int) -> Optional[int]:
+    minimal_index, maximal_index = 0, (len(items) - 1)
     
+    while minimal_index <= maximal_index:
+        middle_index = (minimal_index + maximal_index) // 2
+        value = items[middle_index]
+       
+        if value == item:
+            return middle_index
+        elif value > item:
+            maximal_index = middle_index - 1
+        else:
+            minimal_index = middle_index + 1
+
     return None
